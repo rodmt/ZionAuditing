@@ -1,11 +1,32 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28407.52
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C76CD5F6-2206-48E3-BB81-710759C07F25}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D8717810-35A7-4D5A-8286-B774BB13A19C}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ZionAuditingDb", "src\ZionAuditingDb\ZionAuditingDb.sqlproj", "{1B4CE45C-CDC3-414D-96D5-240B7D7F77AB}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B4CE45C-CDC3-414D-96D5-240B7D7F77AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B4CE45C-CDC3-414D-96D5-240B7D7F77AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B4CE45C-CDC3-414D-96D5-240B7D7F77AB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1B4CE45C-CDC3-414D-96D5-240B7D7F77AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B4CE45C-CDC3-414D-96D5-240B7D7F77AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B4CE45C-CDC3-414D-96D5-240B7D7F77AB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1B4CE45C-CDC3-414D-96D5-240B7D7F77AB} = {C76CD5F6-2206-48E3-BB81-710759C07F25}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4828E2BA-4202-4F2D-B276-2F6433E53AB0}
