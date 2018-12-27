@@ -30,36 +30,36 @@ namespace Zion.Data.Tests.NUnit
 		[Test]
 		public void ADbReadShouldTransformDataRowsToSingleObject()
 		{
-			//// Arrange
-			//const string sqlText = "select * from [Northwind].[dbo].[Products] where [SupplierId] = @param1 and [ProductName] = @param2;";
-			//IDbCommand dbCommand = _database.GetSqlTextCommand(sqlText);
-			//_database.AddInParameter(dbCommand, "@param1", DbType.Int32, 1);
-			//_database.AddInParameter(dbCommand, "@param2", DbType.String, "Chang");
+            // Arrange
+            const string sqlText = "select * from [Northwind].[dbo].[Products] where [SupplierId] = @param1 and [ProductName] = @param2;";
+            IDbCommand dbCommand = _database.GetSqlTextCommand(sqlText);
+            _database.AddInParameter(dbCommand, "@param1", DbType.Int32, 1);
+            _database.AddInParameter(dbCommand, "@param2", DbType.String, "Chang");
 
-			//// Act
-			//var dataSet = _database.ExecuteDataSet(dbCommand);
-			//var products = Db.Read(dataSet.Tables[0].AsEnumerable(), DataRowMake).ToList();
+            // Act
+            var dataSet = _database.ExecuteDataSet(dbCommand);
+            var products = Db.Read(dataSet.Tables[0].AsEnumerable(), DataRowMake).ToList();
 
-			//// Assert
-			//Assert.That(products, Is.Not.Null);
-			//Assert.That(products.Count(), Is.EqualTo(1));
-		}
+            // Assert
+            Assert.That(products, Is.Not.Null);
+            Assert.That(products.Count(), Is.EqualTo(1));
+        }
 
 		[Test]
 		public void ADbReadShouldTransformDataRowsToObjectCollection()
 		{
-			//// Arrange
-			//const string sqlText = "select * from [Northwind].[dbo].[Products];";
-			//IDbCommand dbCommand = _database.GetSqlTextCommand(sqlText);
+            // Arrange
+            const string sqlText = "select * from [Northwind].[dbo].[Products];";
+            IDbCommand dbCommand = _database.GetSqlTextCommand(sqlText);
 
-			//// Act
-			//var dataSet = _database.ExecuteDataSet(dbCommand);
-			//var products = Db.Read(dataSet.Tables[0].AsEnumerable(), DataRowMake).ToList();
+            // Act
+            var dataSet = _database.ExecuteDataSet(dbCommand);
+            var products = Db.Read(dataSet.Tables[0].AsEnumerable(), DataRowMake).ToList();
 
-			//// Assert
-			//Assert.That(products, Is.Not.Null);
-			//Assert.That(products.Count(), Is.EqualTo(77));
-		}
+            // Assert
+            Assert.That(products, Is.Not.Null);
+            Assert.That(products.Count(), Is.EqualTo(77));
+        }
 
 		[Test]
 		public void ADbReadShouldTransformDataRecordToSingleObject()
