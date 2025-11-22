@@ -8,6 +8,9 @@ using ZionAuditing.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add service defaults & Aspire client integrations
+builder.AddServiceDefaults();
+
 // Configure Serilog
 builder.Host.UseSerilog((context, configuration) =>
 {
@@ -76,6 +79,9 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+// Map default endpoints (health checks)
+app.MapDefaultEndpoints();
 
 // Configure middleware pipeline
 app.UseSerilogRequestLogging();

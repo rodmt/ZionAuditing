@@ -32,17 +32,38 @@ This project follows Clean Architecture principles with the following layers:
 
 ## Technology Stack
 
+### Core Framework
 - **.NET 10**: Latest .NET framework
 - **Clean Architecture**: Separation of concerns and dependency inversion
 - **Domain-Driven Design (DDD)**: Rich domain models, value objects, aggregates
 - **CQRS**: Command Query Responsibility Segregation with MediatR
+
+### Data Access & Persistence
 - **Dapper**: Lightweight ORM for data access
 - **SQL Server**: Relational database
+
+### API & Web
 - **FastEndpoints**: High-performance endpoint library
 - **FluentValidation**: Validation library
 - **Serilog**: Structured logging
 - **Problem Details**: RFC 7807 error handling
 - **Swagger/OpenAPI**: API documentation
+
+### Cloud-Native & Orchestration
+- **.NET Aspire**: Cloud-native orchestration and service discovery
+- **OpenTelemetry**: Observability and distributed tracing
+- **Health Checks**: Built-in health monitoring
+
+### Testing
+- **xUnit**: Unit testing framework
+- **Shouldly**: Fluent assertion library
+- **NSubstitute**: Mocking framework
+- **Microsoft.AspNetCore.Mvc.Testing**: Integration testing
+- **Testcontainers**: Container-based integration tests
+- **Arrange-Act-Assert Pattern**: Consistent test structure
+
+### Build & Package Management
+- **Centralized Package Management**: Directory.Packages.props for version control
 
 ## Project Structure
 
@@ -71,15 +92,38 @@ ZionAuditing/
 │   │   ├── Database/                # SQL scripts
 │   │   └── Configuration/           # Infrastructure configuration
 │   │
-│   └── ZionAuditing.Api/            # API layer
-│       ├── Endpoints/               # FastEndpoints
-│       ├── Configuration/           # API configuration
-│       └── Middleware/              # Custom middleware
+│   ├── ZionAuditing.Api/            # API layer
+│   │   ├── Endpoints/               # FastEndpoints
+│   │   ├── Configuration/           # API configuration
+│   │   └── Middleware/              # Custom middleware
+│   │
+│   ├── ZionAuditing.AppHost/        # .NET Aspire orchestration
+│   │   └── Program.cs               # Service orchestration
+│   │
+│   └── ZionAuditing.ServiceDefaults/ # Shared Aspire configuration
+│       └── Extensions.cs            # Observability & health checks
 │
-├── build/                           # Build output
-├── samples/                         # Sample code
-├── test/                            # Unit and integration tests
+├── test/
+│   ├── ZionAuditing.Domain.UnitTests/        # Domain layer tests
+│   │   ├── Entities/                         # Entity tests
+│   │   ├── ValueObjects/                     # Value object tests
+│   │   ├── Common/                           # Common tests
+│   │   └── Builders/                         # Test builders
+│   │
+│   ├── ZionAuditing.Application.UnitTests/   # Application layer tests
+│   │   ├── AuditLogs/Commands/              # Command handler tests
+│   │   ├── AuditLogs/Queries/               # Query handler tests
+│   │   └── Behaviors/                       # Behavior tests
+│   │
+│   ├── ZionAuditing.Infrastructure.UnitTests/ # Infrastructure tests
+│   │   └── Persistence/Repositories/        # Repository tests
+│   │
+│   └── ZionAuditing.Api.IntegrationTests/   # API integration tests
+│       ├── Endpoints/                       # Endpoint tests
+│       └── Fixtures/                        # Test fixtures
+│
 ├── Directory.Build.props            # Common build properties
+├── Directory.Packages.props         # Centralized package versions
 └── .editorconfig                    # Code style configuration
 ```
 
@@ -107,6 +151,23 @@ ZionAuditing/
 
 ### Running the Application
 
+#### Option 1: Using .NET Aspire (Recommended)
+
+```bash
+# Run the Aspire AppHost
+cd src/ZionAuditing.AppHost
+dotnet run
+```
+
+This will start:
+- SQL Server container
+- API with service discovery
+- Aspire Dashboard for monitoring
+
+Access the Aspire Dashboard at the URL shown in the console output.
+
+#### Option 2: Run API Directly
+
 ```bash
 # Navigate to the API project
 cd src/ZionAuditing.Api
@@ -119,6 +180,7 @@ The API will be available at:
 - HTTP: http://localhost:5000
 - HTTPS: https://localhost:5001
 - Swagger UI: https://localhost:5001/swagger
+- Health Checks: http://localhost:5000/health
 
 ## API Endpoints
 
@@ -209,3 +271,96 @@ This project is licensed under the MIT License.
 - [FastEndpoints Documentation](https://fast-endpoints.com/)
 - [MediatR Documentation](https://github.com/jbogard/MediatR)
 - [Serilog Documentation](https://serilog.net/)
+
+## Running Tests
+
+### Run All Tests
+
+```bash
+# Run all tests in solution
+dotnet test
+
+# Run with coverage
+dotnet test --collect:"XPlat Code Coverage"
+```
+
+### Run Specific Test Projects
+
+```bash
+# Domain unit tests
+dotnet test test/ZionAuditing.Domain.UnitTests
+
+# Application unit tests
+dotnet test test/ZionAuditing.Application.UnitTests
+
+# Infrastructure unit tests
+dotnet test test/ZionAuditing.Infrastructure.UnitTests
+
+# API integration tests
+dotnet test test/ZionAuditing.Api.IntegrationTests
+```
+
+### Test Organization
+
+All tests follow the **Arrange-Act-Assert (AAA)** pattern:
+
+```csharp
+[Fact]
+public void Method_Scenario_ExpectedBehavior()
+{
+    // Arrange
+    var input = "test data";
+    var expected = "expected result";
+
+    // Act
+    var actual = MethodUnderTest(input);
+
+    // Assert
+    actual.ShouldBe(expected);
+}
+```
+
+## .NET Aspire Integration
+
+This solution uses .NET Aspire for cloud-native development and orchestration.
+
+### Features
+
+- **Service Orchestration**: Automatically manages service dependencies
+- **SQL Server Integration**: Containerized SQL Server with automatic connection string management
+- **OpenTelemetry**: Built-in distributed tracing and metrics
+- **Health Checks**: Automatic health monitoring for all services
+- **Service Discovery**: Automatic service-to-service communication
+- **Dashboard**: Real-time monitoring and diagnostics
+
+### Configuration
+
+The AppHost configures:
+- SQL Server container with data persistence
+- API service with database reference
+- Health endpoints (`/health`, `/alive`)
+- OpenTelemetry exporters
+
+## Centralized Package Management
+
+This solution uses centralized package management via `Directory.Packages.props`:
+
+### Benefits
+
+- **Single source of truth** for package versions
+- **Easier updates** - change version in one place
+- **Consistency** across all projects
+- **Transitive pinning** prevents version conflicts
+
+### Adding New Packages
+
+1. Add package version to `Directory.Packages.props`:
+   ```xml
+   <PackageVersion Include="PackageName" Version="x.y.z" />
+   ```
+
+2. Reference in project without version:
+   ```xml
+   <PackageReference Include="PackageName" />
+   ```
+

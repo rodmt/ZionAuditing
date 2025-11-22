@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.28407.52
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8E0B4F3E-5F5A-4B5A-9B5A-5F5A5F5A5F5A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{9F1C5G4H-6G6B-5C6B-0C6B-6G6B6G6B6G6B}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZionAuditing.Domain", "src\ZionAuditing.Domain\ZionAuditing.Domain.csproj", "{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZionAuditing.Application", "src\ZionAuditing.Application\ZionAuditing.Application.csproj", "{B2C3D4E5-F6A7-8901-BCDE-F12345678901}"
@@ -12,6 +14,18 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZionAuditing.Infrastructure", "src\ZionAuditing.Infrastructure\ZionAuditing.Infrastructure.csproj", "{C3D4E5F6-A7B8-9012-CDEF-123456789012}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZionAuditing.Api", "src\ZionAuditing.Api\ZionAuditing.Api.csproj", "{D4E5F6A7-B8C9-0123-DEF1-234567890123}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZionAuditing.AppHost", "src\ZionAuditing.AppHost\ZionAuditing.AppHost.csproj", "{E5F6A7B8-C9D0-1234-EF12-345678901234}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZionAuditing.ServiceDefaults", "src\ZionAuditing.ServiceDefaults\ZionAuditing.ServiceDefaults.csproj", "{F6A7B8C9-D0E1-2345-F123-456789012345}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZionAuditing.Domain.UnitTests", "test\ZionAuditing.Domain.UnitTests\ZionAuditing.Domain.UnitTests.csproj", "{A7B8C9D0-E1F2-3456-A234-567890123456}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZionAuditing.Application.UnitTests", "test\ZionAuditing.Application.UnitTests\ZionAuditing.Application.UnitTests.csproj", "{B8C9D0E1-F2A3-4567-B345-678901234567}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZionAuditing.Infrastructure.UnitTests", "test\ZionAuditing.Infrastructure.UnitTests\ZionAuditing.Infrastructure.UnitTests.csproj", "{C9D0E1F2-A3B4-5678-C456-789012345678}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZionAuditing.Api.IntegrationTests", "test\ZionAuditing.Api.IntegrationTests\ZionAuditing.Api.IntegrationTests.csproj", "{D0E1F2A3-B4C5-6789-D567-890123456789}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +49,30 @@ Global
 		{D4E5F6A7-B8C9-0123-DEF1-234567890123}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4E5F6A7-B8C9-0123-DEF1-234567890123}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4E5F6A7-B8C9-0123-DEF1-234567890123}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5F6A7B8-C9D0-1234-EF12-345678901234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5F6A7B8-C9D0-1234-EF12-345678901234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5F6A7B8-C9D0-1234-EF12-345678901234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5F6A7B8-C9D0-1234-EF12-345678901234}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6A7B8C9-D0E1-2345-F123-456789012345}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6A7B8C9-D0E1-2345-F123-456789012345}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6A7B8C9-D0E1-2345-F123-456789012345}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6A7B8C9-D0E1-2345-F123-456789012345}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7B8C9D0-E1F2-3456-A234-567890123456}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7B8C9D0-E1F2-3456-A234-567890123456}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7B8C9D0-E1F2-3456-A234-567890123456}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7B8C9D0-E1F2-3456-A234-567890123456}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8C9D0E1-F2A3-4567-B345-678901234567}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8C9D0E1-F2A3-4567-B345-678901234567}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8C9D0E1-F2A3-4567-B345-678901234567}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8C9D0E1-F2A3-4567-B345-678901234567}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9D0E1F2-A3B4-5678-C456-789012345678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9D0E1F2-A3B4-5678-C456-789012345678}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9D0E1F2-A3B4-5678-C456-789012345678}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9D0E1F2-A3B4-5678-C456-789012345678}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0E1F2A3-B4C5-6789-D567-890123456789}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0E1F2A3-B4C5-6789-D567-890123456789}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0E1F2A3-B4C5-6789-D567-890123456789}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0E1F2A3-B4C5-6789-D567-890123456789}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +82,12 @@ Global
 		{B2C3D4E5-F6A7-8901-BCDE-F12345678901} = {8E0B4F3E-5F5A-4B5A-9B5A-5F5A5F5A5F5A}
 		{C3D4E5F6-A7B8-9012-CDEF-123456789012} = {8E0B4F3E-5F5A-4B5A-9B5A-5F5A5F5A5F5A}
 		{D4E5F6A7-B8C9-0123-DEF1-234567890123} = {8E0B4F3E-5F5A-4B5A-9B5A-5F5A5F5A5F5A}
+		{E5F6A7B8-C9D0-1234-EF12-345678901234} = {8E0B4F3E-5F5A-4B5A-9B5A-5F5A5F5A5F5A}
+		{F6A7B8C9-D0E1-2345-F123-456789012345} = {8E0B4F3E-5F5A-4B5A-9B5A-5F5A5F5A5F5A}
+		{A7B8C9D0-E1F2-3456-A234-567890123456} = {9F1C5G4H-6G6B-5C6B-0C6B-6G6B6G6B6G6B}
+		{B8C9D0E1-F2A3-4567-B345-678901234567} = {9F1C5G4H-6G6B-5C6B-0C6B-6G6B6G6B6G6B}
+		{C9D0E1F2-A3B4-5678-C456-789012345678} = {9F1C5G4H-6G6B-5C6B-0C6B-6G6B6G6B6G6B}
+		{D0E1F2A3-B4C5-6789-D567-890123456789} = {9F1C5G4H-6G6B-5C6B-0C6B-6G6B6G6B6G6B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4828E2BA-4202-4F2D-B276-2F6433E53AB0}
